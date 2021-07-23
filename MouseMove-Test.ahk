@@ -4,33 +4,21 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-; Shift 4 types $ instead of ¤
-+4::Send, $
-return 
-; This does not work
-; <^>!4::Send, ¤
-; return
+Coordmode, Mouse, Screen
 
+^Home::
+;MouseGetPos ,mx, my
+;MouseMove, 20, 20, 0, R
+;MsgBox, mx: %mx% -- my: %my%
 
-; Caps lock - simulates mouse middle button
-CapsLock::MButton
+;SysGet, Mon2, Monitor, 2
+;MouseMove, (Mon2Right - Mon2Left) / 2, (Mon2Bottom - Mon2Top) / 2
+;MsgBox, Left: %Mon2Left% -- Top: %Mon2Top% -- Right: %Mon2Right% -- Bottom %Mon2Bottom%
 
-; Caps lock - simulates mouse middle button
-F12::MButton
-
-
-; Alt Up/Down to do mouse wheel zoom
-; !Up::WheelUp
-; !Down::WheelDown
-
-
-; Zoom in/out with Win Z/X
-<#z::
-send, {WheelUp}
-return 
-<#x::
-send, {WheelDown}
-return 
+	MouseGetPos, mx_o, my_o
+	; MouseMove, mx_o+20, my_o+20 
+	DllCall("SetCursorPos", "int", mx_o+20, "int", my_o+20)
+	return 
 
 
 ; This exits AHK itself - Ctrl Shift Esc

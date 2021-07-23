@@ -4,39 +4,34 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-; Shift 4 types $ instead of ¤
-+4::Send, $
-return 
-; This does not work
-; <^>!4::Send, ¤
-; return
 
+; ^Numpad0::
+; Send, ^{Click}
+; Return
 
-; Caps lock - simulates mouse middle button
-CapsLock::MButton
+; Using Send below does not recreate any Shift/Ctrl qualifiers. 
+; Therefore the dedicated Ctrl option above.
+Numpad0::
+^Numpad0::
++Numpad0::
++^Numpad0::
+{
+  Click, Down
+  ; Send, {RButton down}
+  keywait, Numpad0 
+  Click, Up
+  ; Send, {RButton up}
+}
+Return
 
-; Caps lock - simulates mouse middle button
-F12::MButton
-
-
-; Alt Up/Down to do mouse wheel zoom
-; !Up::WheelUp
-; !Down::WheelDown
-
-
-; Zoom in/out with Win Z/X
-<#z::
-send, {WheelUp}
-return 
-<#x::
-send, {WheelDown}
-return 
-
+NumpadDot::MButton
+Return 
+  
+NumpadEnter::LButton
+Return
 
 ; This exits AHK itself - Ctrl Shift Esc
 ^+Escape::ExitApp
 Return
 
 	
-	
-						

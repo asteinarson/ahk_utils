@@ -9,7 +9,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Send, ^{Click}
 Return
 
-; Using Send below does not recreate any SHift/Ctrl qualifiers. 
+; Using Send below does not recreate any Shift/Ctrl qualifiers. 
 ; Therefore the dedicated Ctrl option above.
 Numpad0::
 {
